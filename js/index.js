@@ -135,8 +135,8 @@ async function getWords() {
 
 function showWinningDialog(){
   userName = prompt(
-    `Parabéns, você completou o jogo com " + ${tries} + " tentativas!
-    Digite seu nome para registrar sua pontuação`
+    `Parabéns, você completou o jogo com ${tries} tentativas e em ${timeDiff} segundos!
+Digite seu nome para registrar sua pontuação no servidor:`
   );
 }
 
