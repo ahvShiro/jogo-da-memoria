@@ -14,6 +14,14 @@ var startTime, endTime;
 var timeDiff;
 var userName;
 
+function switchTheme() {
+    let theme = localStorage.getItem("theme") || "light";
+    theme = theme == "light" ? "dark" : "light";
+    document.body.dataset.theme = theme;
+    localStorage.setItem("theme", theme);
+}
+
+document.body.dataset.theme = localStorage.getItem("theme") || "light";
 document.querySelector(".footer span").textContent = `Tentativas: ${tries}`;
 
 function start() {

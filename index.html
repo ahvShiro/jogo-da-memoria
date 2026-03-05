@@ -12,25 +12,25 @@
     <title>Jogo da Memória</title>
 </head>
 
-<body>
+<body data-theme="light">
 
     <header class="header">
         <h1>Jogo da Memória</h1>
     </header>
 
     <main class="board">
-        <button class="card">?</button>
-        <button class="card">?</button>
-        <button class="card">?</button>
-        <button class="card">?</button>
-        <button class="card">?</button>
-        <button class="card">?</button>
-        <button class="card">?</button>
-        <button class="card">?</button>
-        <button class="card">?</button>
-        <button class="card">?</button>
-        <button class="card">?</button>
-        <button class="card">?</button>
+        <button class="card pixel-corners">?</button>
+        <button class="card pixel-corners">?</button>
+        <button class="card pixel-corners">?</button>
+        <button class="card pixel-corners">?</button>
+        <button class="card pixel-corners">?</button>
+        <button class="card pixel-corners">?</button>
+        <button class="card pixel-corners">?</button>
+        <button class="card pixel-corners">?</button>
+        <button class="card pixel-corners">?</button>
+        <button class="card pixel-corners">?</button>
+        <button class="card pixel-corners">?</button>
+        <button class="card pixel-corners">?</button>
 
     </main>
 
@@ -39,8 +39,12 @@
             Tentativas:
         </span>
 
-        <button id="btnRestart" class="restart-button">
+        <button id="btnRestart" class="button">
             Reiniciar
+        </button>
+
+        <button id="btn" class="button" onclick="switchTheme()">
+            Mudar tema
         </button>
     </footer>
 
