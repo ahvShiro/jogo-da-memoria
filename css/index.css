@@ -71,6 +71,7 @@ body::before {
 .header {
   display: flex;
   flex-direction: column;
+  font-size: clamp(18px, 5vw, 30px);
 
   margin: 3% 2% 3% 2%;
   color: var(--text-light);
@@ -81,13 +82,11 @@ body::before {
     0 -2px 0 var(--stroke-color),
     0 2px 0 var(--stroke-color);
   text-align: center;
-  font-size: 30px;
 }
 
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 120px);
-
+  grid-template-columns: repeat(4, 120px);
   gap: 20px;
 }
 
@@ -95,10 +94,11 @@ body::before {
   display: flex;
   flex-direction: column;
 
-  margin: 3% 25% 0% 25%;
+  margin: 20px 0 20px 0;
   color: var(--text-light);
 
   text-align: center;
+  font-size: clamp(15px, 4vw, 20px);
 }
 
 .footer span {
@@ -147,7 +147,8 @@ body::before {
   align-items: center;
 
   width: 100%;
-  height: 120px;
+  aspect-ratio: 1 / 1;
+  height: auto;
 
   background-color: var(--box);
   border: 1px solid var(--border-default);
@@ -284,4 +285,18 @@ body::before {
 }
 .pixel-corners::after {
   margin: -4px;
+}
+
+@media (max-width: 650px) {
+  .board {
+    grid-template-columns: repeat(3, 120px);
+    gap: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .board {
+    grid-template-columns: repeat(2, 120px);
+    gap: 8px;
+  }
 }
