@@ -27,6 +27,7 @@ function resetGame() {
 export async function start() {
   console.log("GAME START")
   resetGame();
+  updateTry();
   words = await Api.getWords();
   let scrambledWords = scramble([...words, ...words]);
   
@@ -40,14 +41,14 @@ export async function start() {
   });
 }
 
-function addTry() {
-  tries++;
+function updateTry() {
   document.querySelector(".footer span").textContent = `Tentativas: ${tries}` 
 }
 
 function check() {
   // uma tentativa foi feita: aumenta o contador
-  addTry();
+  tries++;
+  updateTry();
 
   // usuário errou
   if (first.textContent != second.textContent) {
