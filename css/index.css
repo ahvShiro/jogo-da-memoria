@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 :root {
   --box: #fbd515;
-  --box-hover: #ffdf3e;
+  --box-hover: #ffe560;
   --box-active: #dabc25;
   --bg: #f4eef1;
   --button: #4f43ae;
@@ -13,8 +13,10 @@
   --card-selected-border: rgb(182, 182, 182);
   --text-color: #000;
   --text-light: #f6f4f5;
+  --text-dark: #000;
   --text-light-hover: #eee;
   --stroke-color: rgb(18, 18, 18);
+  --bg-image: url("/images/lightMario.png");
 }
 
 * {
@@ -26,9 +28,11 @@
 
 html[data-theme="dark"] {
   --bg: #1f1d1e;
-  --text-color: #fff;
+  --bg-image: url("/images/darkMario.png");
+  --box: #269698;
+  --box-hover: #38d6d9;
+  --box-active: #1a8384;
 }
-
 
 body {
   display: flex;
@@ -37,12 +41,31 @@ body {
 
   min-height: 100vh;
 
-  background-color: var(--bg);
-  background-image: url('images/.jpg');
+  background: var(--bg);
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   color: var(--text-color);
+
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: brightness(0.8);
 }
 
 .header {
@@ -50,7 +73,13 @@ body {
   flex-direction: column;
 
   margin: 3% 2% 3% 2%;
+  color: var(--text-light);
 
+  text-shadow:
+    -1px 0 0 var(--stroke-color),
+    1px 0 0 var(--stroke-color),
+    0 -1px 0 var(--stroke-color),
+    0 1px 0 var(--stroke-color);
   text-align: center;
   font-size: 30px;
 }
@@ -67,8 +96,18 @@ body {
   flex-direction: column;
 
   margin: 3% 25% 0% 25%;
+  color: var(--text-light);
 
   text-align: center;
+}
+
+.footer span {
+  font-size: 25px;
+  text-shadow:
+    -2px 0 0 var(--stroke-color),
+    2px 0 0 var(--stroke-color),
+    0 -2px 0 var(--stroke-color),
+    0 2px 0 var(--stroke-color);
 }
 
 .button {
@@ -89,8 +128,8 @@ body {
 
   cursor: pointer;
   transition:
-    background-color 0.1s,
-    border 0.1s;
+    background-color 0.3s,
+    border 0.3s;
 }
 
 .button:hover {
@@ -115,13 +154,16 @@ body {
   border-radius: 5%;
 
   color: var(--text-light);
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
   overflow-wrap: anywhere;
-  -webkit-text-stroke: 0.7px var(--stroke-color);
-
+  text-shadow:
+    -1px 0 0 var(--stroke-color),
+    1px 0 0 var(--stroke-color),
+    0 -1px 0 var(--stroke-color),
+    0 1px 0 var(--stroke-color);
   cursor: pointer;
   transition:
     background-color 0.1s,
@@ -142,7 +184,8 @@ body {
 
 .pixel-corners,
 .pixel-corners--wrapper {
-  clip-path: polygon(0px calc(100% - 8px),
+  clip-path: polygon(
+    0px calc(100% - 8px),
     4px calc(100% - 8px),
     4px calc(100% - 4px),
     8px calc(100% - 4px),
@@ -161,7 +204,8 @@ body {
     8px 4px,
     4px 4px,
     4px 8px,
-    0px 8px);
+    0px 8px
+  );
   position: relative;
 }
 .pixel-corners {
@@ -173,7 +217,8 @@ body {
 }
 .pixel-corners--wrapper .pixel-corners {
   display: block;
-  clip-path: polygon(4px 8px,
+  clip-path: polygon(
+    4px 8px,
     8px 8px,
     8px 4px,
     calc(100% - 8px) 4px,
@@ -184,13 +229,15 @@ body {
     calc(100% - 8px) calc(100% - 4px),
     8px calc(100% - 4px),
     8px calc(100% - 8px),
-    4px calc(100% - 8px));
+    4px calc(100% - 8px)
+  );
 }
 .pixel-corners::after,
 .pixel-corners--wrapper::after {
   content: "";
   position: absolute;
-  clip-path: polygon(0px calc(100% - 8px),
+  clip-path: polygon(
+    0px calc(100% - 8px),
     4px calc(100% - 8px),
     4px calc(100% - 4px),
     8px calc(100% - 4px),
@@ -225,7 +272,8 @@ body {
     8px calc(100% - 8px),
     4px calc(100% - 8px),
     4px 50%,
-    0px 50%);
+    0px 50%
+  );
   top: 0;
   bottom: 0;
   left: 0;
