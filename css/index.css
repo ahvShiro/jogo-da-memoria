@@ -73,7 +73,7 @@ body::before {
   flex-direction: column;
   font-size: clamp(18px, 5vw, 30px);
 
-  margin: 3% 2% 3% 2%;
+  margin: 7% 5% 7% 5%;
   color: var(--text-light);
 
   text-shadow:
@@ -98,7 +98,7 @@ body::before {
   color: var(--text-light);
 
   text-align: center;
-  font-size: clamp(15px, 4vw, 20px);
+  font-size: clamp(10px, 3vw, 20px);
 }
 
 .footer span {
@@ -290,13 +290,17 @@ body::before {
 @media (max-width: 650px) {
   .board {
     grid-template-columns: repeat(3, 120px);
-    gap: 8px;
+    gap: 10px;
   }
 }
 
 @media (max-width: 400px) {
   .board {
-    grid-template-columns: repeat(2, 120px);
+    grid-template-columns: repeat(3, 100px);
     gap: 8px;
+  }
+
+  .card {
+    font-size: 15px;
   }
 }
