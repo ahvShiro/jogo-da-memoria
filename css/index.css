@@ -8,13 +8,13 @@
   --button: #4f43ae;
   --button-hover: rgb(98, 82, 221);
   --button-active: #251f53;
-  --border-default: rgb(40, 40, 40);
+  --border-default: rgb(56, 56, 56);
   --border-hover: rgb(80, 80, 80);
   --card-selected-border: rgb(182, 182, 182);
   --text-color: #000;
   --text-light: #f6f4f5;
   --text-light-hover: #eee;
-  --stroke-color: rgb(84, 84, 84);
+  --stroke-color: rgb(18, 18, 18);
 }
 
 * {
@@ -38,6 +38,10 @@ body {
   min-height: 100vh;
 
   background-color: var(--bg);
+  background-image: url('images/.jpg');
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
   color: var(--text-color);
 }
 
@@ -111,11 +115,12 @@ body {
   border-radius: 5%;
 
   color: var(--text-light);
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: bold;
   text-align: center;
   text-decoration: none;
   overflow-wrap: anywhere;
-  -webkit-text-stroke: 0.5px var(--stroke-color);
+  -webkit-text-stroke: 0.7px var(--stroke-color);
 
   cursor: pointer;
   transition:
@@ -130,6 +135,105 @@ body {
 .card:active {
   background-color: var(--box-active);
 }
-.card.selected {
-  border: 1px solid var(--card-selected-border);
+.card.selected::after {
+  background: var(--card-selected-border);
+  font-size: 40px;
+}
+
+.pixel-corners,
+.pixel-corners--wrapper {
+  clip-path: polygon(0px calc(100% - 8px),
+    4px calc(100% - 8px),
+    4px calc(100% - 4px),
+    8px calc(100% - 4px),
+    8px 100%,
+    calc(100% - 8px) 100%,
+    calc(100% - 8px) calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 8px),
+    100% calc(100% - 8px),
+    100% 8px,
+    calc(100% - 4px) 8px,
+    calc(100% - 4px) 4px,
+    calc(100% - 8px) 4px,
+    calc(100% - 8px) 0px,
+    8px 0px,
+    8px 4px,
+    4px 4px,
+    4px 8px,
+    0px 8px);
+  position: relative;
+}
+.pixel-corners {
+  border: 4px solid transparent;
+}
+.pixel-corners--wrapper {
+  width: fit-content;
+  height: fit-content;
+}
+.pixel-corners--wrapper .pixel-corners {
+  display: block;
+  clip-path: polygon(4px 8px,
+    8px 8px,
+    8px 4px,
+    calc(100% - 8px) 4px,
+    calc(100% - 8px) 8px,
+    calc(100% - 4px) 8px,
+    calc(100% - 4px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 4px),
+    8px calc(100% - 4px),
+    8px calc(100% - 8px),
+    4px calc(100% - 8px));
+}
+.pixel-corners::after,
+.pixel-corners--wrapper::after {
+  content: "";
+  position: absolute;
+  clip-path: polygon(0px calc(100% - 8px),
+    4px calc(100% - 8px),
+    4px calc(100% - 4px),
+    8px calc(100% - 4px),
+    8px 100%,
+    calc(100% - 8px) 100%,
+    calc(100% - 8px) calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 8px),
+    100% calc(100% - 8px),
+    100% 8px,
+    calc(100% - 4px) 8px,
+    calc(100% - 4px) 4px,
+    calc(100% - 8px) 4px,
+    calc(100% - 8px) 0px,
+    8px 0px,
+    8px 4px,
+    4px 4px,
+    4px 8px,
+    0px 8px,
+    0px 50%,
+    4px 50%,
+    4px 8px,
+    8px 8px,
+    8px 4px,
+    calc(100% - 8px) 4px,
+    calc(100% - 8px) 8px,
+    calc(100% - 4px) 8px,
+    calc(100% - 4px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 4px),
+    8px calc(100% - 4px),
+    8px calc(100% - 8px),
+    4px calc(100% - 8px),
+    4px 50%,
+    0px 50%);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--border-default);
+  display: block;
+  pointer-events: none;
+}
+.pixel-corners::after {
+  margin: -4px;
 }
