@@ -52,11 +52,12 @@ body {
   color: var(--text-color);
 
   overflow-x: hidden;
+  position: relative;
 }
 
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: -1;
 
